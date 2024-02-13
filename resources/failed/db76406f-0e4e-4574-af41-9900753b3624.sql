@@ -1,0 +1,7 @@
+SELECT
+  l_orderkey,
+  ARRAY_AGG(l_quantity ORDER BY l_extendedprice) WITHIN GROUP (ORDER BY l_shipdate) AS sorted_quantities
+FROM
+  lineitem
+GROUP BY
+  l_orderkey;
